@@ -6,3 +6,6 @@
  */
 
 require('./bootstrap');
+
+
+require('./components/map.js');

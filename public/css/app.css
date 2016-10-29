@@ -5765,6 +5765,19 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.map-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 60px; }
+  .map-content #mapdata {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0; }
+
 .search-bar {
   position: absolute;
   left: 0;

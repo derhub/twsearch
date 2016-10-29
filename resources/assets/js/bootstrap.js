@@ -11,7 +11,7 @@ window.$ = window.jQuery = require('jquery');
 
 window.$.ajaxSetup({
     headers: {
-        'X-CSRF-TOKEN': Laravel.csrfToken
+        'X-CSRF-TOKEN': app_settings.csrfToken
     }
 });
 

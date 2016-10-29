@@ -12,8 +12,21 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" media="screen" title="no title">
+
+        <script>
+            window.app_settings = {
+                csrfToken: "{{ csrf_token() }}"
+            }
+        </script>
     </head>
     <body>
         @yield('content')
+
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.gmapapi.key') }}&callback=initMap"></script>
+        <script type="text/javascript">
+
+        </script>
+        @yield('footer')
     </body>
 </html>

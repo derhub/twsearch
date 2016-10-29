@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="map-content">
-
+            <div id="mapdata"></div>
         </div>
         <div class="search-bar">
             <form class="form-inline" action="={{ route('search.tweets') }}" method="post">

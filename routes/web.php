@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/tweets', 'TwitterSearchController@search');
+Route::get('/tweets', [
+    'use' => 'TwitterSearchController@search',
+    'as' => 'search.tweets',
+]);

@@ -8,7 +8,7 @@
         </div>
         <div class="search-bar">
             <form class="form-inline" action="={{ route('search.tweets') }}" method="post">
-                <input class="form-control input-search" type="search" name="search" placeholder="City name" value="">
+                <input class="form-control input-search" id="search-place" type="search" name="search" placeholder="City name" value="">
                 <input type="submit" class="btn btn-primary search-button" value="search">
             </form>
         </div>

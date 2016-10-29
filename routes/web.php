@@ -15,7 +15,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/tweets', [
-    'use' => 'TwitterSearchController@search',
-    'as' => 'search.tweets',
-]);
+Route::get('/tweets', 'TwitterSearchController@search')->name('search.tweets');

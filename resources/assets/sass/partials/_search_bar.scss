@@ -1,0 +1,27 @@
+$search-bar-height: 60px;
+$search-bar-button-width: 130px;
+
+.search-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .input-search {
+        position: relative;
+        height: $search-bar-height;
+        font-size: $font-size-large;
+        padding-right: $search-bar-button-width;
+        display: block;
+        width: 100%;
+    }
+
+    .search-button {
+        height: $search-bar-height;
+        position: absolute;
+        right: 0;
+        top: 0;
+        min-width: $search-bar-button-width;
+        font-size: $font-size-large;
+    }
+}

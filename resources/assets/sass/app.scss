@@ -1,9 +1,9 @@
-
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "partials/global.scss";
+@import "partials/map.scss";
+@import "partials/search_bar.scss";

@@ -1,7 +1,8 @@
 let markers = [],
     Geocoder,
     infowindow,
-    mapwindow;
+    mapwindow,
+    isLoading = false;
 
 /**
  * Google map callback
@@ -28,6 +29,13 @@ window.initMap = function () {
     let searchCallback = function(e) {
         e.preventDefault();
 
+        if (isLoading) {
+            alert('Please wait!, Im still searching tweets.');
+            return;
+        }
+
+        isLoading = true;
+
         // hide mobile tablet keyboard on search
         $('#search-place').blur();
 
@@ -43,8 +51,6 @@ window.initMap = function () {
             address: city
         }, function(results, status) {
 
-            $btn.button('reset');
-
             if (status == 'OK') {
                 // change the map center
                 mapwindow.setCenter(results[0].geometry.location);
@@ -53,10 +59,17 @@ window.initMap = function () {
                 clearMarkers()
 
                 // search and add tweet markers
-                addTweets(city, results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                addTweets(city, results[0].geometry.location.lat(), results[0].geometry.location.lng())
+                .always(function() {
+                    $btn.button('reset');
+                    isLoading = false;
+                });
+
             } else {
                 console.log('Geocode was not successful for the following reason: ' + status);
                 alert('Place not found!');
+                $btn.button('reset');
+                isLoading = false;
             }
         });
 

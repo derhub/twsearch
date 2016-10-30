@@ -22,6 +22,7 @@
     <body>
         @yield('content')
 
+        <script src="{{ asset('js/vendor/modernizr.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.gmapapi.key') }}&callback=initMap"></script>
         <script type="text/javascript">

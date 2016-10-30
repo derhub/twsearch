@@ -7,9 +7,9 @@
             <div id="mapdata"></div>
         </div>
         <div class="search-bar">
-            <form class="form-inline" action="={{ route('search.tweets') }}" method="post">
+            <form class="form-inline" id="search-bar" action="={{ route('search.tweets') }}" method="post">
                 <input class="form-control input-search" id="search-place" type="search" name="search" placeholder="City name" value="">
-                <input type="submit" class="btn btn-primary search-button" value="search">
+                <input type="submit" class="btn btn-primary search-button" value="SEARCH" data-loading-text="Searching...">
             </form>
         </div>
     </div>

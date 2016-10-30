@@ -14,13 +14,14 @@ window.initMap = function () {
     // start map
     mapwindow = new google.maps.Map(document.getElementById('mapdata'), {
         zoom: 10,
-        center: new google.maps.LatLng(15.079409, 120.619989),
+        center: new google.maps.LatLng(15.079409, 120.619989), // default pampanga, ph
         mapTypeId: 'roadmap'
     });
 
-    // on click search button
-    $('form .search-button').click(function(e) {
+    let searchCallback = function(e) {
         e.preventDefault();
+
+        let $btn = $('form .search-button').button('loading');
 
         // get the text box value
         // then convert to coordinates
@@ -30,6 +31,9 @@ window.initMap = function () {
         Geocoder.geocode({
             address: city
         }, function(results, status) {
+
+            $btn.button('reset');
+
             if (status == 'OK') {
                 // change the map center
                 mapwindow.setCenter(results[0].geometry.location);
@@ -40,11 +44,15 @@ window.initMap = function () {
                 // search and add tweet markers
                 addTweets(city, results[0].geometry.location.lat(), results[0].geometry.location.lng());
             } else {
-                alert('Geocode was not successful for the following reason: ' + status);
+                console.log('Geocode was not successful for the following reason: ' + status);
+                alert('Place not found!');
             }
         });
 
-    });
+    }
+
+    // on click search button
+    $('#search-bar').submit(searchCallback);
 
     /**
      * Search and add tweet markers

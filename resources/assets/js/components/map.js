@@ -21,6 +21,10 @@ window.initMap = function () {
     let searchCallback = function(e) {
         e.preventDefault();
 
+        // hide mobile tablet keyboard on search
+        $('#search-place').blur();
+
+        // buttong loading state
         let $btn = $('form .search-button').button('loading');
 
         // get the text box value

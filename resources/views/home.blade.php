@@ -4,6 +4,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="map-content">
+            <div id="city-title" class="hide">
+                <h1>TWEETS ABOUT <span id="city-name">Pampanga<span></h1>
+            </div>
             <div id="mapdata"></div>
         </div>
         <div class="search-bar">

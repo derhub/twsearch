@@ -2,7 +2,8 @@ let markers = [],
     Geocoder,
     infowindow,
     mapwindow,
-    isLoading = false;
+    isLoading = false,
+    mapTitle;
 
 /**
  * Google map callback
@@ -16,8 +17,22 @@ window.initMap = function () {
     mapwindow = new google.maps.Map(document.getElementById('mapdata'), {
         zoom: 10,
         center: new google.maps.LatLng(15.079409, 120.619989), // default pampanga, ph
-        mapTypeId: 'roadmap'
+        mapTypeId: 'roadmap',
+        mapTypeControlOptions: {
+            position: google.maps.ControlPosition.RIGHT_BOTTOM
+        },
+        streetViewControlOptions: {
+            position: google.maps.ControlPosition.LEFT_TOP
+        },
+        zoomControlOptions: {
+            position: google.maps.ControlPosition.LEFT_TOP
+        },
     });
+
+    mapTitle = $('#city-title');
+    mapTitle.find('#city-name').text('Pampanga');
+    mapTitle.removeClass('hide');
+    mapwindow.controls[google.maps.ControlPosition.TOP_CENTER].push(mapTitle[0]);
 
     var overlayMarker = new google.maps.OverlayView();
     overlayMarker.draw = function () {
@@ -25,6 +40,8 @@ window.initMap = function () {
     };
     overlayMarker.setMap(mapwindow);
 
+    // load default tweets
+    addTweets('Pampanga', 15.079409, 120.619989);
 
     let searchCallback = function(e) {
         e.preventDefault();
@@ -52,6 +69,9 @@ window.initMap = function () {
         }, function(results, status) {
 
             if (status == 'OK') {
+                // change map title
+                mapTitle.find('#city-name').text(city);
+
                 // change the map center
                 mapwindow.setCenter(results[0].geometry.location);
 
@@ -109,7 +129,7 @@ window.initMap = function () {
 
         })
         .fail(function() {
-            alert('Place not found!');
+            alert('No tweets found!');
         })
     }
 

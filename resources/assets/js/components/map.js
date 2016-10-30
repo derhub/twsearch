@@ -18,6 +18,13 @@ window.initMap = function () {
         mapTypeId: 'roadmap'
     });
 
+    var overlayMarker = new google.maps.OverlayView();
+    overlayMarker.draw = function () {
+        this.getPanes().markerLayer.id = 'marker-circles';
+    };
+    overlayMarker.setMap(mapwindow);
+
+
     let searchCallback = function(e) {
         e.preventDefault();
 
@@ -81,6 +88,7 @@ window.initMap = function () {
                 addMarker({
                     position: new google.maps.LatLng(lat, lon),
                     icon: data.profile_image_url_https,
+                    optimized: false,
                     map: mapwindow,
                     infowindowContent: 'Tweet: ' + data.text + '<br />When: ' + data.created_at
                 });

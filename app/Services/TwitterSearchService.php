@@ -28,7 +28,7 @@ class TwitterSearchService
         $result = $this->sanitizeResult(Twitter::getSearch([
             'q' => $city,
             'geocode' => $geo . ',' . $range,
-            'count' => 10
+            'count' => config('search.count')
         ]));
 
         // cache the result

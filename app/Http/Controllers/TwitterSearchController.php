@@ -27,7 +27,7 @@ class TwitterSearchController extends Controller
     public function search(Request $request)
     {
         $city  = $request->get('city');
-        $range = $request->get('range') ?? '50km';
+        $range = $request->get('range') ?? config('search.default_range');
         $geo   = $request->get('geo');
 
         $results = $this->tweetService->byCity($city, $geo, $range);

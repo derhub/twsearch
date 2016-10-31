@@ -29,3 +29,4 @@ File: config/search.php
 
 1. Cache settings `lifetime => 3600`
 2. Limit number of search results `count => 20`
+3. Default Search range `default_range => '50km'`
